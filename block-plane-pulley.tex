@@ -2,6 +2,7 @@
 \documentclass[twocolumn]{article}
 
 \usepackage{amsmath}
+\usepackage{graphicx}
 \usepackage{times}
 
 \begin{document}
@@ -148,14 +149,24 @@ acceleration can range from a minimum of zero to a maximum of $\tfrac{g}{2}$.
 
 \subsubsection{Minimum Acceleration}
 
-The minimum ($a = 0$) obtains when any one of the following is true:
+The minimum ($a = 0$) obtains when either of the following is true:
 \begin{itemize}
-   \item $\tfrac{M}{m}$ approaches infinity;
-   \item $\theta = \tfrac{\pi}{2}$; or
-   \item $\mu = 0$ and $\theta = 0$.
+   \item $\tfrac{M}{m}$ approaches infinity, or
+   \item $\mu \cos(\theta) + \sin(\theta) \geq 1$.
 \end{itemize}
+Considering the second case, we see that, for a given $\theta$, when $\mu$ is
+larger than $\mu_\text{max} = \sec(\theta) - \tan(\theta)$, the kinetic
+friction is large enough to decelerate the system and halt motion.
+\begin{figure}
+   \includegraphics[width=\columnwidth]{max-mu.png}
+   \label{fig:mu-max}
+\end{figure}
+Figure~\ref{fig:mu-max} shows the how $\mu_\text{max}$ varies with $\theta$.
+For small $\theta$, $\mu$ can approach unity, and the system will still
+accelerate. For values of $\theta$ approaching 90~degrees, however, only a
+small $\mu$ allows the system to accelerate.
 
-\subsubsection{Minimum Acceleration}
+\subsubsection{Maximum Acceleration}
 
 The maximum ($a = \tfrac{g}{2}$) obtains when all of the following are true at
 the same time:
@@ -164,6 +175,26 @@ the same time:
    \item $\mu = 0$; and
    \item $\theta = 0$.
 \end{itemize}
+
+\subsubsection{Summary}
+
+\begin{figure*}
+   \includegraphics[width=\textwidth]{accel-001.png}
+   \label{fig:accel-001}
+\end{figure*}
+
+\begin{figure*}
+   \includegraphics[width=\textwidth]{accel-010.png}
+   \label{fig:accel-010}
+\end{figure*}
+
+\begin{figure*}
+   \includegraphics[width=\textwidth]{accel-100.png}
+   \label{fig:accel-100}
+\end{figure*}
+
+Figure~\ref{fig:accel-001},~\ref{fig:accel-010}, and~\ref{fig:accel-100}
+summarize the result.
 
 \end{document}
 

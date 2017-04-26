@@ -1,0 +1,27 @@
+
+  set contour
+  set cntrlabel font ",7"
+  set cntrparam levels incr 0.01,0.03,0.50
+  set cntrparam linear
+  set format x "%g"
+  set format y "%g"
+  set format z "%.2f"
+  set grid
+  set hidden3d
+  set isosamples 60
+unset key
+  set view map
+  set output "accel-001.png"
+  set samples 100
+unset surface
+  set term pngcairo size 1024,1024
+  set title "Acceleration as Fraction of g for M/m = 0.1"
+  set xlabel "theta (degrees)"
+  set ylabel "mu"
+
+a(mr,mu,theta) = (2.0/(4.0 + mr)) * (1.0 - mu*cos(theta) - sin(theta))
+b(mr,mu,theta) = (a(mr,mu,theta) < 0.0 ? 0.0 : a(mr,mu,theta))
+
+splot [0.0:90.0] [0.0:1.0] b(0.1, y, x*pi/180.0) with lines title "",\
+      b(0.1, y, x*pi/180.0) with labels boxed title ""
+
