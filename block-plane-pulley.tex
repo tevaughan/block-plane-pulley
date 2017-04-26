@@ -5,20 +5,39 @@
 \usepackage{graphicx}
 \usepackage{times}
 
+\title{Exploration of the Parameter Space for an Inclined-Plane Problem}
+
 \begin{document}
+
+\maketitle
+
+\begin{abstract}
+   A moderately complex problem involving a block sliding on an inclined plane,
+   a pulley with rotational inertia, and a second block serving as a
+   counterweight is solved. We present the proper approach, in which no
+   numerical value for any parameter is assumed in the solution. Then the
+   limiting cases are explored. Finally, a summary of the parameter space is
+   presented in a collection of graphs.
+\end{abstract}
 
 \section{Problem}
 
+\begin{figure*}
+   \includegraphics[width=\textwidth]{diagram}
+   \caption{Diagram of problem.}
+   \label{fig:diagram}
+\end{figure*}
+
 The flat bottom of a block B1 of mass~$m$ lies on a plane inclined at an
-angle~$\theta$ to the horizontal. The coefficient of kinetic friction between
-the plane and the block is $\mu$.  A massless, taut, inelastic cable runs from
-B1 toward the top of the plane, around a pulley, and straight down to another
-block B2, which also has mass~$m$.  The pulley's disc has infinite static
-friction against the cable but requires no energy to separate from the cable as
-it moves. The pulley's bearing is frictionless. The disc of the pulley has
-uniform density, total mass $M$, and radius $r$. Find the acceleration $a$ of
-the blocks; express $a$ in terms of $\mu$, $m$, $M$, $\theta$, and the
-acceleration $g$ of gravity.
+angle~$\theta$ to the horizontal. See Figure~\ref{fig:diagram}. The coefficient
+of kinetic friction between the plane and the block is $\mu$.  A massless,
+taut, inelastic cable runs from B1 toward the top of the plane, around a
+pulley, and straight down to another block B2, which also has mass~$m$.  The
+pulley's disc has infinite static friction against the cable but requires no
+energy to separate from the cable as it moves. The pulley's bearing is
+frictionless. The disc of the pulley has uniform density, total mass $M$, and
+radius $r$. Find the acceleration $a$ of the blocks; express $a$ in terms of
+$\mu$, $m$, $M$, $\theta$, and the acceleration $g$ of gravity.
 
 \section{Solution}
 
@@ -159,6 +178,9 @@ larger than $\mu_\text{max} = \sec(\theta) - \tan(\theta)$, the kinetic
 friction is large enough to decelerate the system and halt motion.
 \begin{figure}
    \includegraphics[width=\columnwidth]{max-mu.png}
+   \caption{Plotted against the angle of inclination of the plane, the limiting
+   value $\mu_\text{max}$ of the coefficient of kinetic friction. For any
+   coefficient above this limit, the system decelerates.}
    \label{fig:mu-max}
 \end{figure}
 Figure~\ref{fig:mu-max} shows the how $\mu_\text{max}$ varies with $\theta$.
@@ -180,16 +202,25 @@ the same time:
 
 \begin{figure*}
    \includegraphics[width=\textwidth]{accel-001.png}
+   \caption{Contour map showing lines of constant acceleration across the space
+   of inclination angle and coefficient of kinetic friction for $\tfrac{M}{m} =
+   0.1$. The value of each contour is labeled as a fraction of $g$.}
    \label{fig:accel-001}
 \end{figure*}
 
 \begin{figure*}
    \includegraphics[width=\textwidth]{accel-010.png}
+   \caption{Contour map showing lines of constant acceleration across the space
+   of inclination angle and coefficient of kinetic friction for $\tfrac{M}{m} =
+   1.0$. The value of each contour is labeled as a fraction of $g$.}
    \label{fig:accel-010}
 \end{figure*}
 
 \begin{figure*}
    \includegraphics[width=\textwidth]{accel-100.png}
+   \caption{Contour map showing lines of constant acceleration across the space
+   of inclination angle and coefficient of kinetic friction for $\tfrac{M}{m} =
+   10.0$. The value of each contour is labeled as a fraction of $g$.}
    \label{fig:accel-100}
 \end{figure*}
 

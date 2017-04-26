@@ -2,7 +2,7 @@
 %.png : %.gpi
 	gnuplot $<
 
-FIGURES = max-mu.png accel-001.png accel-010.png accel-100.png
+FIGURES = max-mu.png accel-001.png accel-010.png accel-100.png diagram.pdf
 
 block-plane-pulley.pdf : block-plane-pulley.tex $(FIGURES)
 	pdflatex $<
