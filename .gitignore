@@ -1,3 +1,5 @@
 *.aux
 *.log
+logo.pdf
+*.out
 *.png

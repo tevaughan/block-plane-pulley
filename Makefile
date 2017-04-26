@@ -1,17 +1,28 @@
 
+%.pdf : %.fig
+	fig2dev -L pdf $< > $@
+
 %.png : %.gpi
 	gnuplot $<
 
-FIGURES = max-mu.png accel-001.png accel-010.png accel-100.png diagram.pdf
+DOCNAME = block-plane-pulley
+TEXNAME = $(DOCNAME).tex
+PDFNAME = $(DOCNAME).pdf
 
-block-plane-pulley.pdf : block-plane-pulley.tex $(FIGURES)
-	pdflatex $<
-	pdflatex $<
+FIGURES = crit-mu.png accel-001.png accel-010.png accel-100.png diagram.pdf
 
-.PHONY : clean
+.PHONY : all clean
+
+all : $(PDFNAME)
+
+$(PDFNAME) : $(TEXNAME) logo.pdf $(FIGURES)
+	pdflatex $(TEXNAME)
+	pdflatex $(TEXNAME)
 
 clean :
-	@rm -fv *.png
 	@rm -fv *.aux
 	@rm -fv *.log
+	@rm -fv *.out
+	@rm -fv *.png
+	@rm -fv logo.pdf
 

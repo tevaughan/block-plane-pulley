@@ -1,32 +1,130 @@
 
+\newcommand{\doctitle}{Example Solution to a Physics Problem: Blocks, a Pulley,
+and an Inclined Plane}
+
 \documentclass[twocolumn]{article}
 
 \usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{times}
+\usepackage{amsfonts}  % for example, \mathbb
 
-\title{Exploration of the Parameter Space for an Inclined-Plane Problem}
+% for formatting figure captions
+\usepackage[margin=10pt,font={sf},labelfont=bf]{caption}
+
+\usepackage{enumitem}  % to allow for a compact list with [noitemsep]
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usepackage{times}
+\usepackage{vmargin}
+\usepackage{xcolor}
+
+% This must be the last package.
+\usepackage[colorlinks=true,citecolor=blue,hyperfootnotes=false]{hyperref}
+
+% vmargin setup
+\setpapersize{USletter}
+\setmarginsrb%
+{0.375in}%           left
+{0.375in}%           top
+{0.375in}%           right
+{0.5in}%             bottom
+{2\baselineskip}%    headheight
+{2\baselineskip}%    headsep
+{3\baselineskip}%    footheight
+{4\baselineskip}%    footskip
+
+% mydate macro
+\newcommand{\mydate}{%
+   \number\year\space%
+   \ifcase\month\or%
+      Jan\or\ Feb\or\ Mar\or\ Apr\or\ May\or\ Jun\or%
+      Jul\or\ Aug\or\ Sep\or\ Oct\or\ Nov\or\ Dec
+   \fi\space%
+   \number\day%
+}
+
+% fancyhdr settings
+\pagestyle{fancy}
+\lhead{\sffamily\textbf{\doctitle}}
+\chead{}
+\rhead{\sffamily \thepage~of~\pageref{LastPage}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\lfoot{%
+   \footnotesize\sffamily
+   \begin{minipage}{0.95\textwidth}
+   Copyright\ \copyright\ \ 2017\ \ Thomas E.\ Vaughan.
+   PDF image generated on \mydate.
+   Permission is granted to copy, distribute and/or modify this document under
+   the terms of the GNU Free Documentation License, Version 1.3 or any later
+   version published by the Free Software Foundation; with no Invariant
+   Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the
+   license is included in the section entitled ``GNU Free Documentation
+   License''.
+   \end{minipage}%
+}
+\cfoot{}
+\rfoot{%
+   \begin{minipage}{0.05\textwidth}
+   \begin{flushright}
+   \includegraphics[width=0.85\textwidth]{logo}
+   \end{flushright}
+   \end{minipage}%
+}
 
 \begin{document}
 
-\maketitle
+\thispagestyle{fancy}
 
 \begin{abstract}
-   A moderately complex problem involving a block sliding on an inclined plane,
-   a pulley with rotational inertia, and a second block serving as a
-   counterweight is solved. We present the proper approach, in which no
-   numerical value for any parameter is assumed in the solution. Then the
-   limiting cases are explored. Finally, a summary of the parameter space is
-   presented in a collection of graphs.
+
+   We present an example of how to solve a physics problem.  Involving a block
+   sliding on an inclined plane, a pulley with rotational inertia, and a second
+   block serving as a counterweight, the problem is moderately complex.  No
+   calculus is required.  The example shows the approach in which no numerical
+   value for any parameter is assumed in the solution.  The solution is
+   obtained for the general case.  The specific, limiting cases are explored.
+   Finally, a summary of the parameter space is presented in a collection of
+   graphs.  This approach allows one to grasp all of the modes of behavior that
+   various individual systems of the same type can display and how the
+   different behaviors relate to the parameters defining the type.
+
 \end{abstract}
 
-\section{Problem}
+\section{Introduction}
 
-\begin{figure*}
-   \includegraphics[width=\textwidth]{diagram}
-   \caption{Diagram of problem.}
-   \label{fig:diagram}
-\end{figure*}
+Many a physics problem aimed at the high-school student is stated so that every
+element of the problem has a specified numerical value.  There are good reasons
+to state a problem with numerical specificity and to ask for a numerical
+solution.  Numerical specificity allows for the easy multiplication of
+different example problems of the same general type.  This is convenient for
+the teacher.  Further, the student should be able not only to demonstrate
+conceptual mastery of the subject but also to calculate an accurate answer in a
+specific case.  Numerical practice is good for the student.  Perhaps, for
+practical reasons, the majority of problems should be stated with numerical
+specificity.
+
+In any event, the ultimate purpose of giving a physics problem to a student is
+to allow him to demonstrate conceptual mastery of the subject.  However useful
+numerical calculation may be as a skill, it can be learned and demonstrated
+elsewhere, entirely apart from a physics curriculum.  The conceptual mastery
+necessary for the demonstration of ability in physics, though, is inherently
+abstracted away from the numerical particulars.  The teacher of physics ought
+therefore to emphasize a conceptual method of solution, even for a problem that
+specifies numerical particulars. That is, the teacher might well require that
+the student solve every problem in a perfectly general way and then, perhaps as
+a final step, make numerical substitutions and calculations. At least on
+occasion, the teacher should ask the student to reflect on the general solution
+in order to answer various conceptual questions, such as whether the dimensions
+make sense, whether there might be, for a given quantity, a critical value
+beyond which the behavior of the system changes qualitatively, etc.
+
+The problem considered below has no numerical specificity, but the behavior of
+the physical system is, at the end of the paper, analyzed for a wide range of
+numerical specifics.
+
+\section{Problem}
 
 The flat bottom of a block B1 of mass~$m$ lies on a plane inclined at an
 angle~$\theta$ to the horizontal. See Figure~\ref{fig:diagram}. The coefficient
@@ -37,7 +135,7 @@ pulley's disc has infinite static friction against the cable but requires no
 energy to separate from the cable as it moves. The pulley's bearing is
 frictionless. The disc of the pulley has uniform density, total mass $M$, and
 radius $r$. Find the acceleration $a$ of the blocks; express $a$ in terms of
-$\mu$, $m$, $M$, $\theta$, and the acceleration $g$ of gravity.
+$\mu$, $\tfrac{M}{m}$, $\theta$, and the acceleration $g$ of gravity.
 
 \section{Solution}
 
@@ -49,19 +147,30 @@ the relevant mass, must yield the same acceleration.
 
 \subsection{Forces at B1}
 
+\begin{figure}
+   \includegraphics[width=0.95\columnwidth]{diagram}
+   \caption{Diagram of system. Some of the system parameters ($\theta$, $m$,
+   and $M$) are indicated. The coefficient $\mu$ of friction corresponds to the
+   surface on which block B1 sits. Although the radius $r$ of the pulley's disc
+   is indicated, $r$ is eliminated from all of the relevant expressions and is
+   therefore not a key parameter of the system's behavior.}
+   \label{fig:diagram}
+\end{figure}
+
 Suppose that the tension in the cable attached to B1 is $T_1$. There are three
 forces, parallel to the plane, acting on B1:
 \begin{enumerate}
-      \item a force of magnitude $T_1$ toward the pulley,
-      \item the frictional force $\mu m g \cos(\theta)$ away from the pulley,
-         and
-      \item the plane-parallel component $m g \sin(\theta)$ of B1's weight.
+      \item toward the pulley, a tensile force of magnitude $T_1$,
+      \item away from the pulley, the frictional force $\mu m g \cos(\theta)$
+         due to the plane-perpendicular component of B1's weight, and
+      \item away from the pulley, the plane-parallel component $m g
+         \sin(\theta)$ of B1's weight.
 \end{enumerate}
 The acceleration, as derived from forces acting on B1, is
 \begin{eqnarray}
    \nonumber
    a &=& \frac{T_1 - \mu m g \cos(\theta) - m g \sin(\theta)}{m}\\
-   a &=& \frac{T_1}{m} - [\mu \cos(\theta) + \sin(\theta)] g.
+   a &=& \tfrac{T_1}{m} - [\mu \cos(\theta) + \sin(\theta)] g.
    \label{eq:B1}
 \end{eqnarray}
 
@@ -69,45 +178,40 @@ The acceleration, as derived from forces acting on B1, is
 
 Suppose that the tension in the cable attached to B2 is $T_2$. There are two
 forces, along the direction of the cable, acting on the pulley:
-\begin{enumerate}
-   \item a force of magnitude $T_1$ toward B1 and
-   \item a force of magnitude $T_2$ toward B2.
+\begin{enumerate}[noitemsep]
+   \item toward B1, a tensile force of magnitude $T_1$ and
+   \item toward B2, a tensile force of magnitude $T_2$.
 \end{enumerate}
 There are two corresponding torques:
 \begin{enumerate}
-   \item a torque $r T_1$ tending to spin the pulley so that B1 accelerates
-      down the plane and
-   \item a torque $r T_2$ tending to spin the pulley so that B1 accelerates up
-      the plane.
+   \item a torque $\tau_1 = r T_1$ tending to spin the pulley so that B1
+      accelerates down the plane and
+   \item a torque $\tau_2 = r T_2$ tending to spin the pulley so that B1
+      accelerates up the plane.
 \end{enumerate}
 The angular acceleration, derived from torques acting on the pulley, is
-\begin{eqnarray}
-   \nonumber
-   \alpha &=& \frac{r T_2 - r T_2}{\tfrac{1}{2} M r^2}\\
-   \alpha &=& \frac{2 \: [T_2 - T_1]}{M r}.
-\end{eqnarray}
+\begin{equation}
+   \alpha = \frac{\tau_2 - \tau_1}{I} = \frac{2 \: [T_2 - T_1]}{M r},
+\end{equation}
+where $I = \tfrac{1}{2} M r^2$ is the rotational inertia of the pulley's disc.
 The acceleration, as derived from forces acting on the pulley, is
-\begin{eqnarray}
-   \nonumber
-   a &=& r \alpha\\
-   a &=& \frac{2 \: [T_2 - T_1]}{M}.
+\begin{equation}
+   a = r \alpha = \tfrac{2}{M} [T_2 - T_1].
    \label{eq:pulley}
-\end{eqnarray}
+\end{equation}
 
 \subsection{Forces at B2}
 
 There are two forces acting on B2:
-\begin{enumerate}
-   \item a force of magnitude $T_2$ toward the pulley and
-   \item B2's weight $mg$ away from the pulley.
+\begin{enumerate}[noitemsep]
+   \item toward the pulley, a tensile force of magnitude $T_2$ and
+   \item away from the pulley, B2's weight $mg$.
 \end{enumerate}
 The acceleration, as derived from forces acting on B2, is
-\begin{eqnarray}
-   \nonumber
-   a &=& \frac{mg - T_2}{m}\\
-   a &=& g - \frac{T_2}{m}.
+\begin{equation}
+   a = \frac{mg - T_2}{m} = g - \tfrac{T_2}{m}.
    \label{eq:B2}
-\end{eqnarray}
+\end{equation}
 
 \subsection{Tension Acting on B2}
 
@@ -115,14 +219,13 @@ We can, by combining Equation~\ref{eq:pulley} and Equation~\ref{eq:B2}, solve
 for the tension $T_2$ acting on B2.
 \begin{eqnarray}
    \nonumber
-   \frac{2 \: [T_2 - T_1]}{M} &=& g - \frac{T_2}{m}\\
+   \tfrac{2}{M} [T_2 - T_1] &=& g - \tfrac{T_2}{m}\\
    \nonumber
-   \frac{2 \: T_2}{M} + \frac{T_2}{m} &=& g + \frac{2 \: T_1}{M}\\
+   2 \: [T_2 - T_1] &=& \tfrac{M}{m} [mg - T_2]\\
    \nonumber
-   \left[ \frac{2}{M} + \frac{1}{m} \right] T_2 &=& g + \frac{2 \: T_1}{M}\\
-   \nonumber
-   \left[ 2 + \frac{M}{m} \right] T_2 &=& M g + 2 \: T_1\\
-   T_2 &=& \frac{M g + 2 \: T_1}{2 + \tfrac{M}{m}}
+   \left[2 + \tfrac{M}{m}\right] T_2 &=& \left[\tfrac{M}{m}\right] mg + 2 \: T_1\\
+   T_2 &=& \left[\frac{\tfrac{M}{m}}{2 + \tfrac{M}{m}}\right] mg +
+           \left[\frac{2}{2 + \tfrac{M}{m}}\right] T_1
    \label{eq:T2}
 \end{eqnarray}
 Here we have expressed the result in terms of the ratio $\tfrac{M}{m}$, which,
@@ -135,7 +238,8 @@ Now, combining Equation~\ref{eq:B1}, Equation~\ref{eq:B2}, and
 Equation~\ref{eq:T2}, we can solve for the tension $T_1$ acting on B1.
 \begin{eqnarray}
    \nonumber
-   g - \frac{T_2}{m} &=& \frac{T_1}{m} - [\mu \cos(\theta) + \sin(\theta)] g\\
+   g - \tfrac{T_2}{m} &=& \tfrac{T_1}{m} - [\mu \cos(\theta) + \sin(\theta)]
+                          g\\
    \nonumber
    \frac{T_1 + T_2}{mg} &=& 1 + \mu \cos(\theta) + \sin(\theta)\\
    \nonumber
@@ -143,8 +247,8 @@ Equation~\ref{eq:T2}, we can solve for the tension $T_1$ acting on B1.
    \frac{2}{2 + \tfrac{M}{m}} + \mu \cos(\theta) + \sin(\theta)
 \end{eqnarray}
 \begin{equation}
-   T_1 = \left[ \frac{2 + [\mu \cos(\theta) + \sin(\theta)][2 +
-   \tfrac{M}{m}]}{4 + \tfrac{M}{m}} \right] mg
+   T_1 = \left[ \frac{2 + [\mu \cos(\theta) + \sin(\theta)]\left[2 +
+   \tfrac{M}{m}\right]}{4 + \tfrac{M}{m}} \right] mg
    \label{eq:T1}
 \end{equation}
 
@@ -152,38 +256,40 @@ Equation~\ref{eq:T2}, we can solve for the tension $T_1$ acting on B1.
 
 Finally, combining Equation~\ref{eq:T1} and Equation~\ref{eq:B1}, we can solve
 for the acceleration.
-\begin{small}
-\begin{equation*}
-   \frac{a}{g} = \frac{2 + [\mu \cos(\theta) + \sin(\theta)][2 +
-   \tfrac{M}{m}]}{4 + \tfrac{M}{m}} - [\mu \cos(\theta) + \sin(\theta)]
-\end{equation*}
-\end{small}
-\begin{equation}
-   \frac{a}{g} = \left[ \frac{2}{4 + \tfrac{M}{m}} \right] [1 - \mu
-   \cos(\theta) - \sin(\theta)]
-\end{equation}
+\begin{eqnarray}
+   \nonumber
+   \tfrac{a}{g} &=& \frac{2 + [\mu \cos(\theta) + \sin(\theta)][2 +
+                     \tfrac{M}{m}]}{4 + \tfrac{M}{m}} - [\mu \cos(\theta) +
+                     \sin(\theta)]\\
+   \tfrac{a}{g} &=& \left[ \frac{2}{4 + \tfrac{M}{m}} \right] [1 - \mu
+                    \cos(\theta) - \sin(\theta)]
+\end{eqnarray}
 Again, we see that the acceleration depends on three parameters:
 $\tfrac{M}{m}$, $\mu$, and $\theta$. The form of the solution shows that the
 acceleration can range from a minimum of zero to a maximum of $\tfrac{g}{2}$.
 
 \subsubsection{Minimum Acceleration}
 
-The minimum ($a = 0$) obtains when either of the following is true:
+The minimum acceleration ($a = 0$) obtains when either of the following is
+true:
 \begin{itemize}
    \item $\tfrac{M}{m}$ approaches infinity, or
-   \item $\mu \cos(\theta) + \sin(\theta) \geq 1$.
+   \item $\mu \cos(\theta) + \sin(\theta) = 1$.
 \end{itemize}
 Considering the second case, we see that, for a given $\theta$, when $\mu$ is
-larger than $\mu_\text{max} = \sec(\theta) - \tan(\theta)$, the kinetic
-friction is large enough to decelerate the system and halt motion.
+larger than the critical value $\mu_\text{crit} = \sec(\theta) - \tan(\theta)$,
+the kinetic friction is large enough to decelerate the system. In such a case,
+the deceleration would stop when the system comes to rest, for at that moment
+the kinetic frictional force would cease to exist.
 \begin{figure}
-   \includegraphics[width=\columnwidth]{max-mu.png}
+   \includegraphics[width=0.95\columnwidth]{crit-mu.png}
    \caption{Plotted against the angle of inclination of the plane, the limiting
-   value $\mu_\text{max}$ of the coefficient of kinetic friction. For any
-   coefficient above this limit, the system decelerates.}
-   \label{fig:mu-max}
+   value $\mu_\text{crit}$ of the coefficient of kinetic friction. For any
+   coefficient above this limit, a moving system decelerates, and a stationary
+   system remains stationary.}
+   \label{fig:mu-crit}
 \end{figure}
-Figure~\ref{fig:mu-max} shows the how $\mu_\text{max}$ varies with $\theta$.
+Figure~\ref{fig:mu-crit} shows the how $\mu_\text{crit}$ varies with $\theta$.
 For small $\theta$, $\mu$ can approach unity, and the system will still
 accelerate. For values of $\theta$ approaching 90~degrees, however, only a
 small $\mu$ allows the system to accelerate.
@@ -200,32 +306,24 @@ the same time:
 
 \subsubsection{Summary}
 
-\begin{figure*}
-   \includegraphics[width=\textwidth]{accel-001.png}
-   \caption{Contour map showing lines of constant acceleration across the space
-   of inclination angle and coefficient of kinetic friction for $\tfrac{M}{m} =
-   0.1$. The value of each contour is labeled as a fraction of $g$.}
-   \label{fig:accel-001}
-\end{figure*}
+\begin{figure}
+   \includegraphics[width=0.95\columnwidth]{accel-001.png}
+   \includegraphics[width=0.95\columnwidth]{accel-010.png}
+   \includegraphics[width=0.95\columnwidth]{accel-100.png}
+   \caption{Contours of constant acceleration in $\theta$-$\mu$ plane for each
+      of a small (0.1), a mid-range (1.0), and a large (10.0) value of
+      $\tfrac{M}{m}$.}
+   \label{fig:accel}
+\end{figure}
 
-\begin{figure*}
-   \includegraphics[width=\textwidth]{accel-010.png}
-   \caption{Contour map showing lines of constant acceleration across the space
-   of inclination angle and coefficient of kinetic friction for $\tfrac{M}{m} =
-   1.0$. The value of each contour is labeled as a fraction of $g$.}
-   \label{fig:accel-010}
-\end{figure*}
+Figure~\ref{fig:accel} summarizes the result. Notice that the curve for zero
+acceleration in each of the three plots is the same as the curve in
+Figure~\ref{fig:mu-crit}. Each curve for negative acceleration applies only to
+a system that is initially moving and indicates frictional deceleration.
 
-\begin{figure*}
-   \includegraphics[width=\textwidth]{accel-100.png}
-   \caption{Contour map showing lines of constant acceleration across the space
-   of inclination angle and coefficient of kinetic friction for $\tfrac{M}{m} =
-   10.0$. The value of each contour is labeled as a fraction of $g$.}
-   \label{fig:accel-100}
-\end{figure*}
+\newpage
 
-Figure~\ref{fig:accel-001},~\ref{fig:accel-010}, and~\ref{fig:accel-100}
-summarize the result.
+\input{fdl-1.3}
 
 \end{document}
 

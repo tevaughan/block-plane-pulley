@@ -1,10 +1,10 @@
 
   set grid
 unset key
-  set output "max-mu.png"
+  set output "crit-mu.png"
   set term pngcairo
-  set xlabel "theta (degrees)"
-  set ylabel "maximum mu"
+  set xlabel "{/Symbol q} (degrees)"
+  set ylabel "{/Symbol m}_{crit}"
 
 plot [0.0:89.9] 1.0/cos(x*pi/180.0) - tan(x*pi/180.0)
 
