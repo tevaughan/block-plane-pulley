@@ -6,5 +6,5 @@ unset key
   set xlabel "{/Symbol q} (degrees)"
   set ylabel "{/Symbol m}_{crit}"
 
-plot [0.0:89.9] 1.0/cos(x*pi/180.0) - tan(x*pi/180.0)
+plot [0.0:89.999] 1.0/cos(x*pi/180.0) - tan(x*pi/180.0)
 

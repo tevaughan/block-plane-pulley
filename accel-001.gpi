@@ -15,7 +15,6 @@ unset key
   set samples 100
 unset surface
   set term pngcairo
-  set title "Acceleration as Fraction of {/Times-Italic g} for {/Times-Italic M/m} = 0.1"
   set xlabel "{/Symbol q} (degrees)"
   set ylabel "{/Symbol m}"
 

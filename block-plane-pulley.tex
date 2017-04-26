@@ -1,6 +1,5 @@
 
-\newcommand{\doctitle}{Example Solution to a Physics Problem: Blocks, a Pulley,
-and an Inclined Plane}
+\newcommand{\doctitle}{How To Solve a Theoretical Physics Problem}
 
 \documentclass[twocolumn]{article}
 
@@ -79,16 +78,17 @@ and an Inclined Plane}
 
 \begin{abstract}
 
-   We present an example of how to solve a physics problem.  Involving a block
-   sliding on an inclined plane, a pulley with rotational inertia, and a second
-   block serving as a counterweight, the problem is moderately complex.  No
-   calculus is required.  The example shows the approach in which no numerical
-   value for any parameter is assumed in the solution.  The solution is
-   obtained for the general case.  The specific, limiting cases are explored.
-   Finally, a summary of the parameter space is presented in a collection of
-   graphs.  This approach allows one to grasp all of the modes of behavior that
-   various individual systems of the same type can display and how the
-   different behaviors relate to the parameters defining the type.
+   We present an example of how to solve a theoretical physics problem.
+   Involving a block sliding on an inclined plane, a pulley with rotational
+   inertia, and a second block serving as a counterweight, the problem is
+   moderately complex.  No calculus is required.  The example shows the
+   approach in which no numerical value for any parameter is assumed in the
+   solution.  The solution is obtained for the general case.  The specific,
+   limiting cases are explored.  Finally, a summary of the parameter space is
+   presented in a collection of graphs.  This approach allows one to grasp all
+   of the modes of behavior that various individual systems of the same type
+   can display and how the different behaviors relate to the parameters
+   defining the type.
 
 \end{abstract}
 
@@ -98,31 +98,34 @@ Many a physics problem aimed at the high-school student is stated so that every
 element of the problem has a specified numerical value.  There are good reasons
 to state a problem with numerical specificity and to ask for a numerical
 solution.  Numerical specificity allows for the easy multiplication of
-different example problems of the same general type.  This is convenient for
+different particular problems of the same general type.  This is convenient for
 the teacher.  Further, the student should be able not only to demonstrate
 conceptual mastery of the subject but also to calculate an accurate answer in a
-specific case.  Numerical practice is good for the student.  Perhaps, for
-practical reasons, the majority of problems should be stated with numerical
-specificity.
+specific case.  Numerical practice is good for the student.  Also, experimental
+physics is inherently numerical. Almost any problem involving the statistical
+analysis of experimental data is likely to require numerical particulars. For
+all of these reaons, one might argue that, as a matter of good practice, the
+majority of problems should be stated with numerical specificity.
 
-In any event, the ultimate purpose of giving a physics problem to a student is
-to allow him to demonstrate conceptual mastery of the subject.  However useful
-numerical calculation may be as a skill, it can be learned and demonstrated
-elsewhere, entirely apart from a physics curriculum.  The conceptual mastery
-necessary for the demonstration of ability in physics, though, is inherently
-abstracted away from the numerical particulars.  The teacher of physics ought
-therefore to emphasize a conceptual method of solution, even for a problem that
-specifies numerical particulars. That is, the teacher might well require that
+Yet the ultimate purpose of giving to a student a theoretical physics problem
+(not a statistics problem) is to allow him to demonstrate conceptual mastery of
+some aspect of theoretical physics.  However useful numerical calculation may
+be as a skill, it can be learned and demonstrated elsewhere, entirely apart
+from a curriculum on theoretical physics.  The conceptual mastery necessary for
+the demonstration of ability in theoretical physics is inherently abstracted
+away from the numerical particulars.  The teacher of physics ought therefore to
+emphasize a conceptual method of solution, even for a problem that happens to
+specify numerical particulars.  That is, the teacher might well require that
 the student solve every problem in a perfectly general way and then, perhaps as
-a final step, make numerical substitutions and calculations. At least on
-occasion, the teacher should ask the student to reflect on the general solution
-in order to answer various conceptual questions, such as whether the dimensions
-make sense, whether there might be, for a given quantity, a critical value
-beyond which the behavior of the system changes qualitatively, etc.
+a final step, make numerical substitutions and arithmetic calculations. At
+least on occasion, the teacher should ask the student to reflect on the general
+solution in order to answer various conceptual questions, such as whether the
+dimensions make sense, whether there might be, for a given quantity, a critical
+value beyond which the behavior of the system changes qualitatively, etc.
 
 The problem considered below has no numerical specificity, but the behavior of
-the physical system is, at the end of the paper, analyzed for a wide range of
-numerical specifics.
+the physical system is, at the end of the paper, analyzed across a wide range
+of numerical specifics.
 
 \section{Problem}
 
@@ -148,7 +151,9 @@ the relevant mass, must yield the same acceleration.
 \subsection{Forces at B1}
 
 \begin{figure}
-   \includegraphics[width=0.95\columnwidth]{diagram}
+   \begin{center}
+      \includegraphics[width=0.95\columnwidth]{diagram}
+   \end{center}
    \caption{Diagram of system. Some of the system parameters ($\theta$, $m$,
    and $M$) are indicated. The coefficient $\mu$ of friction corresponds to the
    surface on which block B1 sits. Although the radius $r$ of the pulley's disc
@@ -272,7 +277,7 @@ acceleration can range from a minimum of zero to a maximum of $\tfrac{g}{2}$.
 
 The minimum acceleration ($a = 0$) obtains when either of the following is
 true:
-\begin{itemize}
+\begin{itemize}[noitemsep]
    \item $\tfrac{M}{m}$ approaches infinity, or
    \item $\mu \cos(\theta) + \sin(\theta) = 1$.
 \end{itemize}
@@ -282,8 +287,10 @@ the kinetic friction is large enough to decelerate the system. In such a case,
 the deceleration would stop when the system comes to rest, for at that moment
 the kinetic frictional force would cease to exist.
 \begin{figure}
-   \includegraphics[width=0.95\columnwidth]{crit-mu.png}
-   \caption{Plotted against the angle of inclination of the plane, the limiting
+   \begin{center}
+      \includegraphics[width=0.95\columnwidth]{crit-mu.png}
+   \end{center}
+   \caption{Plotted against the angle of inclination of the plane, the critical
    value $\mu_\text{crit}$ of the coefficient of kinetic friction. For any
    coefficient above this limit, a moving system decelerates, and a stationary
    system remains stationary.}
@@ -296,30 +303,67 @@ small $\mu$ allows the system to accelerate.
 
 \subsubsection{Maximum Acceleration}
 
-The maximum ($a = \tfrac{g}{2}$) obtains when all of the following are true at
-the same time:
-\begin{itemize}
-   \item $\tfrac{M}{m}$ approaches zero;
+The maximum acceleration ($a = \tfrac{g}{2}$) obtains when all of the following
+are true at the same time:
+\begin{itemize}[noitemsep]
+   \item $\tfrac{M}{m} = 0$;
    \item $\mu = 0$; and
    \item $\theta = 0$.
+\end{itemize}
+
+\subsubsection{Maximum Deceleration}
+
+The maximum deceleration ($a = -\tfrac{g}{2\sqrt{2}}$) obtains when all of the
+following are true at the same time:
+\begin{itemize}[noitemsep]
+   \item $\tfrac{M}{m} = 0$;
+   \item $\mu = 1$; and
+   \item $\theta = \tfrac{\pi}{4}$.
 \end{itemize}
 
 \subsubsection{Summary}
 
 \begin{figure}
-   \includegraphics[width=0.95\columnwidth]{accel-001.png}
-   \includegraphics[width=0.95\columnwidth]{accel-010.png}
-   \includegraphics[width=0.95\columnwidth]{accel-100.png}
+   \begin{center}
+      \includegraphics[width=0.9\columnwidth]{accel-001.png}
+      \includegraphics[width=0.9\columnwidth]{accel-010.png}
+      \includegraphics[width=0.9\columnwidth]{accel-100.png}
+   \end{center}
    \caption{Contours of constant acceleration in $\theta$-$\mu$ plane for each
-      of a small (0.1), a mid-range (1.0), and a large (10.0) value of
-      $\tfrac{M}{m}$.}
+            of a small, a mid-range, and a large value of $\tfrac{M}{m}$. The
+            top plot corresponds to $\tfrac{M}{m} = 0.1$; the middle, to
+            $\tfrac{M}{m} = 1.0$; and the bottom, to $\tfrac{M}{m} = 10.0$.
+            Each contour is labeled with the corresponding acceleration as a
+            fraction of $g$.}
    \label{fig:accel}
 \end{figure}
 
 Figure~\ref{fig:accel} summarizes the result. Notice that the curve for zero
 acceleration in each of the three plots is the same as the curve in
 Figure~\ref{fig:mu-crit}. Each curve for negative acceleration applies only to
-a system that is initially moving and indicates frictional deceleration.
+a system that is initially moving and indicates frictional deceleration. For
+positive $\mu$, friction is present while the system is moving. If the system
+be initially pushed into a state of motion, then there are three modes of
+behavior, and which behavior is expressed depends on the value of $\mu$.
+\begin{enumerate}
+   \item Friction dominates the behavior, by slowing the system to a halt, when
+      $\mu > \mu_\text{crit} = \sec(\theta) - \tan(\theta)$.
+   \item When $\mu = \mu_\text{crit}$, the system will continue to move at the
+      initial velocity.
+   \item Otherwise, when $\mu < \mu_\text{crit}$, the system will accelerate
+      toward velocities greater than the initial velocity.
+\end{enumerate}
+
+\section{Conclusion}
+
+Without considering any arbitrary, numerical particulars, we have gained a
+thorough understanding of every particular problem corresponding to
+Figure~\ref{fig:diagram}.  Whenever a student applies this same approach to any
+problem, he does what is proper to theoretical physics.
+
+The full source code to this article, including the text and the source code
+for the figures, is available here:
+\url{https://github.com/tevaughan/block-plane-pulley}.
 
 \newpage
 
